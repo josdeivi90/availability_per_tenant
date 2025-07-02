@@ -64,16 +64,27 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r backend/requirements.txt
 
-      # Login a Azure CLI
+      # Instalar Azure CLI
+      - name: 📥 Install Azure CLI
+        run: |
+          curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+
+      # Login a Azure CLI con credenciales de usuario
       - name: 🔐 Azure CLI Login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+        env:
+          AZURE_USER: ${{ secrets.AZURE_USER }}
+          AZURE_PASSWORD: ${{ secrets.AZURE_PASSWORD }}
+        run: |
+          echo "🔐 Iniciando sesión en Azure con usuario..."
+          az login --username "$AZURE_USER" --password "$AZURE_PASSWORD"
+          echo "✅ Login exitoso"
 
       # Verificar conexión Azure
       - name: ✅ Verify Azure Connection
         run: |
+          echo "🔍 Verificando conexión a Azure..."
           az account show
+          echo "📋 Listando clústeres AKS disponibles..."
           az aks list --output table | head -10
 
       # Ejecutar análisis principal

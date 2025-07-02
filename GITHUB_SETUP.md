@@ -16,9 +16,27 @@ Esta guía te ayudará a configurar todos los secretos y ajustes necesarios en t
 
 Ve a tu repositorio en GitHub: **Settings > Secrets and variables > Actions**
 
-### **Secretos Obligatorios:**
+### **Secretos Obligatorios (Configuración Simplificada para Testing):**
 
-#### **1.1 Azure Credentials (AZURE_CREDENTIALS)**
+#### **1.1 Azure User (AZURE_USER)**
+```bash
+# Tu email de usuario de Azure
+tu-usuario@dominio.com
+```
+
+#### **1.2 Azure Password (AZURE_PASSWORD)**
+```bash
+# Tu contraseña de Azure
+tu-password-azure
+```
+
+> **💡 Nota:** Esta configuración usa tu login personal de Azure, ideal para testing y desarrollo inicial. Para producción se recomienda usar Service Principal.
+
+### **Configuración Alternativa para Producción (Service Principal):**
+
+Si prefieres usar Service Principal en lugar de credenciales personales:
+
+#### **1.3 Azure Credentials (AZURE_CREDENTIALS) - ALTERNATIVA**
 ```bash
 # En tu terminal local, ejecuta:
 az ad sp create-for-rbac --name "kubehealth-dashboard" \
@@ -35,18 +53,6 @@ Copia la salida JSON completa y agrégala como secreto `AZURE_CREDENTIALS`:
   "subscriptionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 }
-```
-
-#### **1.2 Azure User (AZURE_USER)**
-```bash
-# Tu email de usuario de Azure
-tu-usuario@dominio.com
-```
-
-#### **1.3 Azure Password (AZURE_PASSWORD)**
-```bash
-# Tu contraseña de Azure (solo si es necesaria para az login)
-tu-password-azure
 ```
 
 #### **1.4 PagerDuty API Token (PAGERDUTY_API_TOKEN)**
