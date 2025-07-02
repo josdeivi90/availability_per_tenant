@@ -1,0 +1,57 @@
+# ============================================================
+# KubeHealth Dashboard - Dependencias Python
+# ============================================================
+# Versión mínima: Python 3.9+
+
+# ============================================================
+# AZURE DEPENDENCIES
+# ============================================================
+# Azure Identity para autenticación programática
+azure-identity>=1.15.0
+
+# Azure Management para gestión de recursos AKS (versión compatible con azure-cli)
+azure-mgmt-containerservice>=26.0.0
+
+# Azure Resource Management para gestión de recursos generales
+azure-mgmt-resource>=23.0.0
+
+# Azure Core para funcionalidades base
+azure-core>=1.29.0
+
+# ============================================================
+# KUBERNETES CLIENT
+# ============================================================
+# Cliente oficial de Kubernetes para Python
+kubernetes>=28.1.0
+
+# ============================================================
+# HTTP & API CLIENTS
+# ============================================================
+# Biblioteca estándar para requests HTTP
+requests>=2.31.0
+
+# urllib3 compatible (versión que evita el warning)
+urllib3>=1.26.0,<2.0.0
+
+# ============================================================
+# DATA PROCESSING
+# ============================================================
+# Para manejo de fechas y timestamps
+python-dateutil>=2.8.2
+
+# Para procesamiento de JSON y validación
+jsonschema>=4.19.0
+
+# ============================================================
+# ENVIRONMENT & CONFIGURATION
+# ============================================================
+# Para cargar variables de entorno desde .env
+python-dotenv>=1.0.0
+
+# ============================================================
+# UTILITIES
+# ============================================================
+# Para operaciones de tiempo
+pytz>=2023.3
+
+# Nota: uuid está en la biblioteca estándar de Python, no requiere instalación 
